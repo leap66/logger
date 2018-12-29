@@ -2,7 +2,7 @@ package com.grade.logger.log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.grade.logger.mgr.ContextMgr;
+import com.grade.logger.mgr.NetContext;
 import com.grade.logger.util.LogUtil;
 
 import java.io.BufferedReader;
@@ -52,8 +52,8 @@ public class LogStashDescription implements BaseDestination {
 
   public LogStashDescription(LogLevel logLevel) {
     this.logLevel = logLevel;
-    entriesFile = new File(ContextMgr.getInstance().getFilesDir().getAbsolutePath(), "logger.json");
-    sendingFile = new File(ContextMgr.getInstance().getFilesDir().getAbsolutePath(),
+    entriesFile = new File(NetContext.getInstance().getFilesDir().getAbsolutePath(), "logger.json");
+    sendingFile = new File(NetContext.getInstance().getFilesDir().getAbsolutePath(),
         "logger.sending.json");
     gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
     initUpload();
@@ -71,9 +71,9 @@ public class LogStashDescription implements BaseDestination {
 
   @Override
   public void setFileName(String fileName) {
-    entriesFile = new File(ContextMgr.getInstance().getFilesDir().getAbsolutePath(),
+    entriesFile = new File(NetContext.getInstance().getFilesDir().getAbsolutePath(),
         fileName + ".json");
-    sendingFile = new File(ContextMgr.getInstance().getFilesDir().getAbsolutePath(),
+    sendingFile = new File(NetContext.getInstance().getFilesDir().getAbsolutePath(),
         fileName + ".sending.json");
   }
 

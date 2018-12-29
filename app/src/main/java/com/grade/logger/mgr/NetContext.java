@@ -3,16 +3,16 @@ package com.grade.logger.mgr;
 import android.content.Context;
 
 /**
- * ContextMgr : 全局Context管理器 Application
+ * NetContext : 全局Context管理器 Application
  * <p>
  * </> Created by ylwei on 2018/2/24.
  */
-public class ContextMgr {
+public class NetContext {
   private static Object instance;
 
   public static Context getInstance() {
     if (null == instance)
-      throw new NullPointerException("you should init ContextMgr first");
+      throw new NullPointerException("you should init NetContext first");
     return (Context) instance;
   }
 
@@ -21,5 +21,4 @@ public class ContextMgr {
       throw new NullPointerException("context is NULL");
     instance = context.getApplicationContext();
   }
-
 }

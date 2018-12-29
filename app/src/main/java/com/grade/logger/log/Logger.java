@@ -8,7 +8,7 @@ import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
-import com.grade.logger.mgr.ContextMgr;
+import com.grade.logger.mgr.NetContext;
 import com.grade.logger.util.Bean2MapUtil;
 import com.grade.logger.util.DeviceInfoUtil;
 import com.grade.logger.util.LogUtil;
@@ -163,7 +163,7 @@ public class Logger {
   }
 
   private static Map<String, Object> initField() {
-    Context context = ContextMgr.getInstance();
+    Context context = NetContext.getInstance();
     if (context == null)
       return new HashMap<>();
     LogModel logModel = new LogModel();
