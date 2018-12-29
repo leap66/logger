@@ -19,7 +19,7 @@ public class LoggerMgr {
 
   // 初始化日志组件
   public static void init(Context context, String errUrl, String errToken) {
-    NetContext.init(context);
+    LogContext.init(context);
     Logger.init();
     // 初始化异常捕获组件
     CrashHandler.getInstance().init();

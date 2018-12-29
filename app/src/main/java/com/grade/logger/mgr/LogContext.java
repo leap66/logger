@@ -3,16 +3,16 @@ package com.grade.logger.mgr;
 import android.content.Context;
 
 /**
- * NetContext : 全局Context管理器 Application
+ * LogContext : 全局Context管理器 Application
  * <p>
  * </> Created by ylwei on 2018/2/24.
  */
-public class NetContext {
+public class LogContext {
   private static Object instance;
 
   public static Context getInstance() {
     if (null == instance)
-      throw new NullPointerException("you should init NetContext first");
+      throw new NullPointerException("you should init LogContext first");
     return (Context) instance;
   }
 

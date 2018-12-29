@@ -23,7 +23,7 @@ import android.util.DisplayMetrics;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.grade.logger.mgr.NetContext;
+import com.grade.logger.mgr.LogContext;
 
 import org.json.JSONException;
 
@@ -82,7 +82,7 @@ public class DeviceInfoUtil {
    */
   @SuppressLint("HardwareIds")
   public static String getImei() {
-    Context context = NetContext.getInstance();
+    Context context = LogContext.getInstance();
     if (ContextCompat.checkSelfPermission(context,
         Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED)
       return UN_PERMISSION;
@@ -94,7 +94,7 @@ public class DeviceInfoUtil {
    */
   @SuppressLint("HardwareIds")
   public static String getImsi() {
-    Context context = NetContext.getInstance();
+    Context context = LogContext.getInstance();
     if (ContextCompat.checkSelfPermission(context,
         Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED)
       return UN_PERMISSION;
@@ -137,7 +137,7 @@ public class DeviceInfoUtil {
 
   @SuppressLint("WifiManagerPotentialLeak")
   private static WifiInfo getWifiInfo() {
-    Context context = NetContext.getInstance().getApplicationContext();
+    Context context = LogContext.getInstance().getApplicationContext();
     WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
     WifiInfo info = null;
     if (null != wifiManager) {
@@ -152,7 +152,7 @@ public class DeviceInfoUtil {
   @SuppressLint({
       "HardwareIds", "ApplySharedPref", "MissingPermission"})
   public synchronized static String getUDID() {
-    Context mContext = NetContext.getInstance();
+    Context mContext = LogContext.getInstance();
     if (uuid == null) {
       final SharedPreferences prefs = mContext.getApplicationContext()
           .getSharedPreferences(PREFS_FILE, Context.MODE_PRIVATE);
@@ -207,7 +207,7 @@ public class DeviceInfoUtil {
    */
   @SuppressLint("MissingPermission")
   public static JsonElement getCellInfo() throws JSONException {
-    Context context = NetContext.getInstance();
+    Context context = LogContext.getInstance();
     if (ContextCompat.checkSelfPermission(context,
         Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
       return null;
@@ -246,7 +246,7 @@ public class DeviceInfoUtil {
    * 获取屏幕分辨率
    */
   public static String getScreenResolution() {
-    Context context = NetContext.getInstance();
+    Context context = LogContext.getInstance();
     DisplayMetrics dm = context.getResources().getDisplayMetrics();
     // WindowManager windowManager;
     // try {
@@ -268,7 +268,7 @@ public class DeviceInfoUtil {
    * 获取屏幕类型 1- 横屏 0- 竖屏
    */
   public static String getScreenType() {
-    Context context = NetContext.getInstance();
+    Context context = LogContext.getInstance();
     Configuration mConfiguration = context.getResources().getConfiguration();
     int ori = mConfiguration.orientation;
     if (ori == Configuration.ORIENTATION_LANDSCAPE) {
@@ -291,7 +291,7 @@ public class DeviceInfoUtil {
    */
   @SuppressLint("HardwareIds")
   public static String getOperators() {
-    Context context = NetContext.getInstance();
+    Context context = LogContext.getInstance();
     if (ContextCompat.checkSelfPermission(context,
         Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED)
       return UN_PERMISSION;
@@ -314,7 +314,7 @@ public class DeviceInfoUtil {
    * 获取当前网络状态
    */
   public static String getNetworkType() {
-    Context context = NetContext.getInstance();
+    Context context = LogContext.getInstance();
     String strNetworkType = "无网络";
     NetworkInfo networkInfo = ((ConnectivityManager) context
         .getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
@@ -395,7 +395,7 @@ public class DeviceInfoUtil {
    * 获取当前系统语言格式
    */
   public static String getSystemLanguage() {
-    Context mContext = NetContext.getInstance();
+    Context mContext = LogContext.getInstance();
     Locale locale = mContext.getResources().getConfiguration().locale;
     String language = locale.getLanguage();
     String country = locale.getCountry();
@@ -488,7 +488,7 @@ public class DeviceInfoUtil {
    * 获取屏幕尺寸
    */
   public static String getPhoneSize() {
-    Context context = NetContext.getInstance();
+    Context context = LogContext.getInstance();
     DecimalFormat df = new DecimalFormat("######0.0");
     DisplayMetrics dm = context.getResources().getDisplayMetrics();
     int width = dm.widthPixels;
